@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "87029442650",
+    "project_id": "bytesflareinfotech",
+    "storage_bucket": "bytesflareinfotech.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87029442650:android:909e561faaf777013f9063",
+        "android_client_info": {
+          "package_name": "com.example.bytesflare_infotech_admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-C3knIY87Kcym88aXU27agc3dLSNcJbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
