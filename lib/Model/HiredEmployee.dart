@@ -5,6 +5,7 @@ class HiredEmployee {
   final String appliedDate;
   final String hiredAt;
   final String portfolioLink;
+  final String mobileNo;
   final String resumeUrl;
 
   HiredEmployee({
@@ -15,6 +16,7 @@ class HiredEmployee {
     required this.hiredAt,
     required this.portfolioLink,
     required this.resumeUrl,
+    required this.mobileNo,
   });
 
   factory HiredEmployee.fromMap(String id, Map<String, dynamic> map) {
@@ -26,6 +28,7 @@ class HiredEmployee {
       hiredAt: map['hiredAt'] ?? '',
       portfolioLink: map['portfolioLink'] ?? '',
       resumeUrl: map['resumeUrl'] ?? '',
+      mobileNo: map['mobileNo'],
     );
   }
 
@@ -37,6 +40,7 @@ class HiredEmployee {
       'hiredAt': hiredAt,
       'portfolioLink': portfolioLink,
       'resumeUrl': resumeUrl,
+      'mobileNo': mobileNo,
     };
   }
 }

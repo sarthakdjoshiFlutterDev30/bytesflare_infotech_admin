@@ -3,6 +3,7 @@ class Candidate {
   final String name;
   final String jobDesignation;
   final String appliedDate;
+  final String mobileNo;
   final String resumeUrl;
   final String? portfolioLink;
 
@@ -13,6 +14,7 @@ class Candidate {
     required this.appliedDate,
     required this.resumeUrl,
     this.portfolioLink,
+    required this.mobileNo,
   });
 
   factory Candidate.fromMap(String id, Map<String, dynamic> map) {
@@ -23,6 +25,7 @@ class Candidate {
       appliedDate: map['appliedDate'] ?? '',
       resumeUrl: map['resumeUrl'] ?? '',
       portfolioLink: map['portfolioLink'],
+      mobileNo: map['mobileNo'] ?? '',
     );
   }
 
@@ -33,6 +36,7 @@ class Candidate {
       'appliedDate': appliedDate,
       'resumeUrl': resumeUrl,
       'portfolioLink': portfolioLink,
+      'mobileNo': mobileNo,
     };
   }
 }

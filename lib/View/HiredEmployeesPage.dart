@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Model/HiredEmployee.dart';
 import 'pdf_viewer_page.dart';
@@ -194,6 +195,28 @@ class HiredEmployeesPage extends StatelessWidget {
                         children: [
                           ElevatedButton.icon(
                             onPressed: () {
+                              _launchPhone(e.mobileNo);
+                            },
+                            icon: const Icon(Icons.call, color: Colors.white),
+                            label: const Text("Call"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 8,
+                              ),
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+
+                          ElevatedButton.icon(
+                            onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -254,5 +277,11 @@ class HiredEmployeesPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _launchPhone(String phone) async {
+    final Uri phoneLaunchUri = Uri(scheme: 'tel', path: phone);
+
+    await launch(phoneLaunchUri.toString());
   }
 }

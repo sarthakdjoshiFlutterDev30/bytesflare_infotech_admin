@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Model/candidate_model.dart';
 import 'HiredEmployeesPage.dart';
@@ -20,6 +21,7 @@ class CandidateListPage extends StatelessWidget {
             'name': c.name,
             'jobDesignation': c.jobDesignation,
             'appliedDate': c.appliedDate,
+            'mobileNo': c.mobileNo,
             'hiredAt': hiredDate,
             'portfolioLink': c.portfolioLink,
             'resumeUrl': c.resumeUrl,
@@ -196,21 +198,38 @@ class CandidateListPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(
-                              Icons.picture_as_pdf,
-                              color: Colors.redAccent,
-                            ),
-                            tooltip: "View Resume",
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) =>
-                                      PdfViewerPage(pdfUrl: c.resumeUrl),
+                          Expanded(
+                            child: Column(
+                              children: <Widget>[
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.call,
+                                    color: Colors.green,
+                                  ),
+                                  tooltip: "Call",
+                                  onPressed: () {
+                                    _launchPhone(c.mobileNo);
+                                  },
                                 ),
-                              );
-                            },
+
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.picture_as_pdf,
+                                    color: Colors.redAccent,
+                                  ),
+                                  tooltip: "View Resume",
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            PdfViewerPage(pdfUrl: c.resumeUrl),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -269,5 +288,11 @@ class CandidateListPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _launchPhone(String phone) async {
+    final Uri phoneLaunchUri = Uri(scheme: 'tel', path: phone);
+
+    await launch(phoneLaunchUri.toString());
   }
 }
