@@ -5,6 +5,7 @@ class Candidate {
   final String appliedDate;
   final String mobileNo;
   final String resumeUrl;
+  final String photoUrl;
   final String? portfolioLink;
 
   Candidate({
@@ -13,6 +14,7 @@ class Candidate {
     required this.jobDesignation,
     required this.appliedDate,
     required this.resumeUrl,
+    required this.photoUrl,
     this.portfolioLink,
     required this.mobileNo,
   });
@@ -26,6 +28,7 @@ class Candidate {
       resumeUrl: map['resumeUrl'] ?? '',
       portfolioLink: map['portfolioLink'],
       mobileNo: map['mobileNo'] ?? '',
+      photoUrl: map['photoUrl'] ?? '',
     );
   }
 
@@ -37,6 +40,7 @@ class Candidate {
       'resumeUrl': resumeUrl,
       'portfolioLink': portfolioLink,
       'mobileNo': mobileNo,
+      'photoUrl': photoUrl,
     };
   }
 }

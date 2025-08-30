@@ -140,14 +140,18 @@ class HiredEmployeesPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 28,
                         backgroundColor: Colors.teal.shade100,
-                        child: Text(
-                          e.name.isNotEmpty ? e.name[0].toUpperCase() : '',
-                          style: const TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.teal,
-                          ),
-                        ),
+                        child: (e.photoUrl.isNotEmpty)
+                            ? Image.network(e.photoUrl)
+                            : Text(
+                                e.name.isNotEmpty
+                                    ? e.name[0].toUpperCase()
+                                    : '',
+                                style: const TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.teal,
+                                ),
+                              ),
                       ),
                       const SizedBox(width: 14),
 
@@ -248,7 +252,7 @@ class HiredEmployeesPage extends StatelessWidget {
                           ElevatedButton.icon(
                             onPressed: () => fireEmployee(context, e),
                             icon: const Icon(
-                              Icons.fire_extinguisher,
+                              Icons.cancel_outlined,
                               color: Colors.white,
                             ),
                             label: const Text("Fire"),

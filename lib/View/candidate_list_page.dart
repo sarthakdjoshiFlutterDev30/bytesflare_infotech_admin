@@ -25,6 +25,7 @@ class CandidateListPage extends StatelessWidget {
             'hiredAt': hiredDate,
             'portfolioLink': c.portfolioLink,
             'resumeUrl': c.resumeUrl,
+            'photoUrl': c.photoUrl,
           });
 
       await FirebaseFirestore.instance
@@ -166,14 +167,16 @@ class CandidateListPage extends StatelessWidget {
                           CircleAvatar(
                             radius: 26,
                             backgroundColor: Colors.teal.shade100,
-                            child: Text(
-                              c.name[0].toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.teal,
-                              ),
-                            ),
+                            child: (c.photoUrl.isNotEmpty)
+                                ? Image.network(c.photoUrl, fit: BoxFit.cover)
+                                : Text(
+                                    c.name[0].toUpperCase(),
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.teal,
+                                    ),
+                                  ),
                           ),
                           const SizedBox(width: 12),
                           Expanded(

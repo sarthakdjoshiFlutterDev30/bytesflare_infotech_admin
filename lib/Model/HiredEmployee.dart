@@ -7,6 +7,7 @@ class HiredEmployee {
   final String portfolioLink;
   final String mobileNo;
   final String resumeUrl;
+  final String photoUrl;
 
   HiredEmployee({
     required this.id,
@@ -16,6 +17,7 @@ class HiredEmployee {
     required this.hiredAt,
     required this.portfolioLink,
     required this.resumeUrl,
+    required this.photoUrl,
     required this.mobileNo,
   });
 
@@ -28,7 +30,8 @@ class HiredEmployee {
       hiredAt: map['hiredAt'] ?? '',
       portfolioLink: map['portfolioLink'] ?? '',
       resumeUrl: map['resumeUrl'] ?? '',
-      mobileNo: map['mobileNo'],
+      photoUrl: map['photoUrl'] ?? "",
+      mobileNo: map['mobileNo'] ?? "",
     );
   }
 
@@ -41,6 +44,7 @@ class HiredEmployee {
       'portfolioLink': portfolioLink,
       'resumeUrl': resumeUrl,
       'mobileNo': mobileNo,
+      'photoUrl': photoUrl,
     };
   }
 }
